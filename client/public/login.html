@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        setTimeout(resetcookie,100);
+    function resetcookie(){
+        document.cookie = "data=; expire=Thu, 01 Jan 1970 00:00:01 GMT;" 
+        document.cookie = "result=; expire=Thu, 01 Jan 1970 00:00:01 GMT;" 
+    }
+</script>
+</head>
+<body>
+    <center>
+        <form action="http://localhost:3002/login" method="post">
+        id <input type="text" name="id" id="id"> <br>
+        pw <input type="password" name="pw" id="pw"><br>
+        <input type="submit">
+        
+        </form>
+       
+    </center>
+</body>
+</html>
