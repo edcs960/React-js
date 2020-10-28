@@ -181,28 +181,7 @@ router.post("/",(req,res)=>{
     
     function ck_All(){
         //console.log("ck_All 실행");
-        if(!ck_UserID(id)){
-            return false;
-        }
-        if(!ck_passwd(id,pwd,ck_pwd)){
-            return false;
-        }
-        if(!ck_name(name)){
-            return false;
-        }
-        if(!ck_DIV(DivCode)){
-            return false;
-        }
-        if(!ck_grade(Grade)){
-            return false;
-        }
-        if(!ck_phone(phone)){
-            return false;
-        }
-        if(!ck_email(adress)){
-            return false;
-        }
-        return true;
+        (ck_UserID(id) && ck_passwd(id,pwd,ck_pwd) && ck_name(name) && ck_DIV(DivCode) && ck_grade(Grade) && ck_phone(phone) && ck_email(adress)) ? return true : return false
     }
 /*
     console.log('-----유저 정보-----');
