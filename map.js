@@ -1,3 +1,5 @@
+//실패작
+
 /*global kakao*/
 import React,{Component} from "react";
 import "./App.css";
