@@ -15,27 +15,25 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-var outdata = [];
-
 router.post("/", function (req, res) {
-  connection.query("SELECT * FROM BOARD limit 10;", function (err, rows) {
+
+  var title = req.body.title;
+  var writer = req.body.write;
+  var content = req.body.contents;
+
+  var sql = 'INSERT INTO BOARD (TITLE,CONTENTS,WRITER,public) VALUES (?,?,?,?);'
+  var para = [title, content, writer, 1]
+
+  var query = connection.query(sql, para, function (err, rows) {
     try {
-      if (err) throw err;
-      var i;
-      outdata = [];
-      for (i = 0; i < rows.length; i++) {
-        var boarddata = {};
-        boarddata.idx = encodeURI(rows[i].IDX);
-        boarddata.title = encodeURI(rows[i].TITLE);
-        boarddata.writer = encodeURI(rows[i].WRITER);
-        outdata.push(boarddata);
-      }
+      console.log("작성");
+      console.log(query.sql);
+      
     } catch (error) {
-      console.error(error);
+      console.error(err);
     }
   });
-
-  res.send(outdata);
+  return 0;
 });
 
 module.exports = router;

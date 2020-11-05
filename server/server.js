@@ -10,6 +10,7 @@ const calendar = require("./routes/caldata.js");
 const addcalendar = require("./routes/addcalendar.js");
 const login = require('./routes/login.js');
 const signup = require('./routes/signup.js');
+const map = require('./routes/map');
 
 const cors = require('cors');
 app.use(cors());
@@ -23,6 +24,7 @@ app.use("/cal", calendar);
 app.use("/addcalendar", addcalendar);
 app.use("/login",login);
 app.use("/signup",signup);
+app.use("/map",map);
 
 const port = 3002;
 app.listen(port, () => console.log(`Listen ${port}`));

@@ -10,12 +10,14 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "fullcalendar": "^5.3.2",
     "http-proxy-middleware": "^1.0.5",
     "jquery": "^3.5.1",
     "moment": "^2.29.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-kakao-maps": "0.0.13",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "styled-components": "^5.2.0",
@@ -30,6 +32,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "parser": "babel-eslint",
     "extends": "react-app"
   },
   "browserslist": {
@@ -43,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0"
   }
 }

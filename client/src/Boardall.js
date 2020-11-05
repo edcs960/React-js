@@ -1,55 +1,17 @@
 import React from "react";
 import "./App.css";
-import Axios from "axios";
 
 class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      board: [],
-    };
-  }
-
-  componentDidMount() {
-    this.init();
-  }
-
-  init = () => {
-    setInterval(async () => {
-      try {
-        const board = await Axios.post("http://localhost:3002/board");
-        this.setState({ board: board.data });
-      } catch (error) {
-        console.error(error);
-        this.setState({ board: [] });
-      }
-    }, 4000);
-  };
-
   render() {
-    const { board } = this.state;
     return (
-      <>
-        <div className="Board">
-          {board &&
-            board.map((board, pri) => {
-              return (
-                <div>
-                  <div key={pri}>
-                    <a href={`http://naver.com`} target={`_blank`}>
-                      <div>
-                        {`  ${board.idx}`}
-                        {`${decodeURI(board.title)}`}{" "}
-                        {`WRITER:     ${decodeURI(board.writer)}`}{" "}
-                      </div>
-                    </a>
-                    <hr />
-                  </div>
-                </div>
-              );
-            })}
-        </div>
-      </>
+      <div>
+        <form action="http://172.22.200.47:3002/board" method="post">
+          제목   : <input type="text" name="title" />
+          작성자 : <input type="text"  name="write"/>
+          내용   : <input type="text" name="contents"/>
+          <input type="submit" />
+        </form>
+      </div>
     );
   }
 }
