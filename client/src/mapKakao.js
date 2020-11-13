@@ -311,7 +311,7 @@ class KakaoMap extends Component{
                     latlng: new kakao.maps.LatLng(35.266218, 129.084834)
                 },
                 {
-                    content: '<div>부산외국어대학교캡퍼스</div>',
+                    content: '<div>부산외국어대학교캠퍼스</div>',
                     latlng: new kakao.maps.LatLng(35.267186, 129.0801791)
                 },
                 {
@@ -395,9 +395,11 @@ class KakaoMap extends Component{
     render() {
         return (
             <div className="kakaomap">
-                    <button name="Geumjeong" id="Geumjeong" value="금정3번 버스" onClick={this.MakeGeumjong}>금정 3번</button>
-                    <button name="Bus301" id="Bus301" value="301번 버스" onClick={this.MakeBus301}>301번 버스</button>
-                    <botton name="DelMarker" id="DelMarker" onClick=""></botton>
+                <button name="Geumjeong" id="Geumjeong" value="금정3번 버스" onClick={this.MakeGeumjong}>금정 3번</button>
+                <button name="Bus301" id="Bus301" value="301번 버스" onClick={this.MakeBus301}>301번 버스</button>
+                <form action="http://172.22.200.47:3002/map" method="post" name="form">
+                    <button name="Refresh" id="Refresh" value={this.WhatBus} onClick="">새로고침(고장)</button>
+                </form>
                 <div id="map" name="map" style={{width:"800px", height:"800px"}}></div>
             </div>
         );
