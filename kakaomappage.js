@@ -15,21 +15,25 @@ class KakaoMap extends Component{
         super(props);
         this.MakeGeumjong = this.MakeGeumjong.bind(this);
         this.MakeBus301 = this.MakeBus301.bind(this);
+        this.state = {
+            value: null,
+        };
     }
 
     componentDidMount(){
         kakao.maps.load (() =>{ // 카카오맵 api 가져오기
             var mapContainer = document.getElementById('map'),
                 mapOptions = {
-                center: new kakao.maps.LatLng(35.257225, 129.087442),
-                level: 5
+                    center: new kakao.maps.LatLng(35.257225, 129.087442),
+                    level: 5
                 };
             var map = new kakao.maps.Map(mapContainer,mapOptions);
 
-            MAP = map;
+            
             map.setDraggable(false);
             map.setZoomable(false);
             //map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+            MAP = map;
         });
     }
 
@@ -310,7 +314,7 @@ class KakaoMap extends Component{
                     latlng: new kakao.maps.LatLng(35.266218, 129.084834)
                 },
                 {
-                    content: '<div>부산외국어대학교캡퍼스</div>',
+                    content: '<div>부산외국어대학교캠퍼스</div>',
                     latlng: new kakao.maps.LatLng(35.267186, 129.0801791)
                 },
                 {
@@ -385,7 +389,7 @@ class KakaoMap extends Component{
             }
             return console.log("성공하였습니다.");
         }else{
-                return alert("실패하였습니다.");
+                return console.log("실패하였습니다.");
         }
     }
 
@@ -397,7 +401,7 @@ class KakaoMap extends Component{
                 <form action="http://172.22.200.47:3002/map" method="post" name="form">
                     <button name="Geumjeong" id="Geumjeong" value="금정3번 버스" onClick={this.MakeGeumjong}>금정 3번</button>
                     <button name="Bus301" id="Bus301" value="301번 버스" onClick={this.MakeBus301}>301번 버스</button>
-                    <botton name="DelMarker" id="DelMarker" onClick=""></botton>
+                    <button name="Refresh" id="Refresh" value={this.WhatBus}>새로고침(고장)</button>
                 </form>
                 <div id="map" name="map" style={{width:"800px", height:"800px"}}></div>
             </div>
